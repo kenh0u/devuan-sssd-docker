@@ -1,0 +1,15 @@
+services:
+  toolbox:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kenhou/devuan-sssd:daedalus
+    container_name: devuan-sssd
+    volumes:
+      - type: bind
+        source: ./sssd-config/
+        target: /etc/sssd/
+      - type: bind
+        source: ./home/
+        target: /home/
+    restart: always
